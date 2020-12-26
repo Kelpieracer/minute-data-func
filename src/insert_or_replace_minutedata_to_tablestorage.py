@@ -1,5 +1,4 @@
 import time
-from .finance import read_week_of_minutedata_from_yahoo
 from azure.cosmosdb.table import TableBatch
 
 
@@ -7,13 +6,12 @@ def is_batch_full(count):
     return (count) % 100 == 0
 
 
-def insert_or_replace_week_of_minutedata(table_client, table_name, ticker):
+def insert_or_replace_minutedata_to_tablestorage(table_client, table_name, ticker, minutedata):
     time.sleep(2)
     print(ticker)
-    MinuteItems = read_week_of_minutedata_from_yahoo(ticker)
     batch = TableBatch()
     batch_row_count = 0
-    for index, minuteItem in MinuteItems.iterrows():
+    for index, minuteItem in minutedata.iterrows():
         rowKey = index.strftime('%Y-%m-%d %H:%M:%S')
         my_entity = {
             'PartitionKey': ticker,
