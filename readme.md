@@ -1,8 +1,10 @@
 # MinuteData function
 
+## Create your own history of 1 minute interval stock and index data
+
 This is an Azure function app, with the purpose of fetching minute stock/index price data from yahoo.finance.com, for futher processing for use in stock analysis.
 The data is then stored to Azure table storage, capable of storing large quantities of data at low cost.
-The tickers selected based on Nordnet Markets offering of Unlimited Turbos for expense free trading.
+The tickers selected based on Nordnet Markets Finland offering of Unlimited Turbos for expense free trading, but you are free to repace the tickers with your own choices.
 Yahoo offers minute data only for the past 7 days, therefore this application is continously fetching more data.
 
 ## Two triggers are provided

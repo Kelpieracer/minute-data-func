@@ -7,7 +7,9 @@ def is_batch_full(count):
 
 
 def insert_or_replace_minutedata_to_tablestorage(table_client, table_name, ticker, minutedata):
+    # This delay is a precaution, Yahoo does not like too fast repetitive fetches.
     time.sleep(2)
+
     print(ticker)
     batch = TableBatch()
     batch_row_count = 0
