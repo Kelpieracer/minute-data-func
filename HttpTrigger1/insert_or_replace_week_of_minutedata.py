@@ -31,7 +31,6 @@ def insert_or_replace_week_of_minutedata(table_client, table_name, ticker):
             print(index, end='\r')
             table_client.commit_batch(table_name=table_name, batch=batch)
             batch = TableBatch()
-
     if(not is_batch_full(batch_row_count)):
         table_client.commit_batch(table_name=table_name, batch=batch)
     print()

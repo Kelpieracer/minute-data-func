@@ -3,3 +3,8 @@
 # Manually managing azure-functions-worker may cause unexpected issues
 
 azure-functions
+azure-cosmosdb-table
+python-dotenv
+yfinance
+numpy==1.19.3
+

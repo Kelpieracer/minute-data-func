@@ -3,7 +3,7 @@
 
 import os
 from azure.cosmosdb.table.tableservice import TableService
-from .upsert_batch import insert_or_replace_week_of_minutedata
+from .insert_or_replace_week_of_minutedata import insert_or_replace_week_of_minutedata
 from dotenv import load_dotenv
 
 
