@@ -28,7 +28,7 @@ tickers = ['MES=F', 'MNQ=F', '^GDAXI', '^STOXX50E',
            'SPOT',
            'TSLA',
            'TWTR',
-           '^DJI',
+           'MYM=F',
            'M2K=F',
            # FN25
            'ABSO.ST',
@@ -86,5 +86,5 @@ def fetch_stock_data(just_one_ticker):
         minutedata = get_week_of_minutedata_from_yahoo(ticker)
         insert_or_replace_minutedata_to_tablestorage(
             table_client, table_name, ticker, minutedata)
-        if(just_one_ticker):
+        if just_one_ticker:
             return

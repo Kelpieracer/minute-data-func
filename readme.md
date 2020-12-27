@@ -60,7 +60,7 @@ The tickers which are fetched are listed in `start.py`:
 
 ### Minifutures, indexes (in addition to turbos)
 
-- Dow Jones Industrial Average (^DJI)
+- Micro E-mini Dow Jones Industri (MYM=F)
 - Micro E-mini Russell 2000 Index (M2K=F)
 
 ### Minifutures, commodities (in addition to turbos)
