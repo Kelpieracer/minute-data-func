@@ -3,9 +3,12 @@
 
 import os
 from azure.cosmosdb.table.tableservice import TableService
+# from .insert_or_replace_minutedata_to_tablestorage
 from .insert_or_replace_minutedata_to_tablestorage import insert_or_replace_minutedata_to_tablestorage
 from dotenv import load_dotenv
 from .get_week_of_minutedata_from_yahoo import get_week_of_minutedata_from_yahoo
+
+# change this to 'HOUR' or 'MINUTE' depending on timespan you want
 
 tickers = ['MES=F', 'MNQ=F', '^GDAXI', '^STOXX50E',
            'NOKIA.HE', 'OUT1V.HE', 'NESTE.HE', 'FORTUM.HE', '^OMXS30GI', 'TYRES.HE',
@@ -73,17 +76,18 @@ tickers = ['MES=F', 'MNQ=F', '^GDAXI', '^STOXX50E',
            ]
 
 
-def fetch_stock_data(just_one_ticker):
+def fetch_stock_data(just_one_ticker, data_time_span):
     load_dotenv()
     account_key = os.environ.get("account_key")
     account_name = os.environ.get("account_name")
-    table_name = os.environ.get("table_name")
+    table_name = os.environ.get(
+        "minute table_name") if data_time_span != 'HOUR' else os.environ.get("hour_table_name")
 
     table_client = TableService(
         account_name=account_name, account_key=account_key)
 
     for ticker in tickers:
-        minutedata = get_week_of_minutedata_from_yahoo(ticker)
+        minutedata = get_week_of_minutedata_from_yahoo(ticker, data_time_span)
         insert_or_replace_minutedata_to_tablestorage(
             table_client, table_name, ticker, minutedata)
         if just_one_ticker:
