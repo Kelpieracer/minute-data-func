@@ -81,7 +81,7 @@ def fetch_stock_data(just_one_ticker, data_time_span):
     account_key = os.environ.get("account_key")
     account_name = os.environ.get("account_name")
     table_name = os.environ.get(
-        "minute table_name") if data_time_span != 'HOUR' else os.environ.get("hour_table_name")
+        "minute_table_name") if data_time_span != 'HOUR' else os.environ.get("hour_table_name")
 
     table_client = TableService(
         account_name=account_name, account_key=account_key)
